@@ -1,0 +1,15 @@
+module alu(ALU_in1, ALU_in2, op, ALU_out);
+  // op: 0 for addition, 1 for XOR
+
+  input[3:0] ALU_in1, ALU_in2;
+  output[3:0] reg ALU_out;
+  input op;
+  wire carry;
+
+  always @(ALU_in1, ALU_in2, op) begin
+    if (op == 1'b0)
+      threeBit_FA fa(.a(ALU_in1),.b(ALU_in2),.cin(0),.cout(carry),.s(ALU_out))
+    else
+      threeBit_xor xor(.a(ALU_in1), .b(ALU_in2), .res(ALU_out))
+  end
+endmodule

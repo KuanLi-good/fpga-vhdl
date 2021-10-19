@@ -1,0 +1,8 @@
+module threeBit_xor(a,b,res);
+		input [2:0] a,b;
+		output [2:0] s;
+
+		xor x1(.in1(a[0]), .in2(b[0]), .res(s[0]));
+    xor x2(.in1(a[1]), .in2(b[1]), .res(s[1]));
+    xor x3(.in1(a[2]), .in2(b[2]), .res(s[2]));
+endmodule

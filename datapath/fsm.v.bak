@@ -1,0 +1,19 @@
+module fsm(cur, next, func, new_func);
+  input [4:0] cur;
+  output[4:0] next;
+  input [2:0] func;
+  input [9:0] new_func;
+
+  always @(*) begin
+    case(cur)
+      5'b00000: next = 5'b00001;
+
+      5'b00001: begin
+        if(new_func[9:7] == 3'b010)
+          next = 5'b00011;
+        else if(new_func[9:7] == 3'b000)
+          next = 5'b00110;
+      end
+    endcase
+  end
+endmodule

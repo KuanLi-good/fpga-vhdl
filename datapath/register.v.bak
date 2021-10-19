@@ -1,0 +1,7 @@
+module register(D, clk, enable Q);
+  input [3:0] D, clk, enable;
+  output reg[3:0] Q;
+
+  always @(posedge clk and posedge enable) begin
+      Q <= D;
+endmodule

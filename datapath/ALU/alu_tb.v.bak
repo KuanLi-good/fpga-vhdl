@@ -1,0 +1,24 @@
+module alu_tb();
+  reg [2:0] a, b;
+  wire [2:0] out;
+  reg op;
+
+  alu block(.ALU_in1(a), .ALU_in2(b), .op(op), .ALU_out(out));
+
+  initial begin
+    a = 3'b000;
+    b = 3'b000;
+    op = 1'b0;
+  end
+
+  always begin
+		#50
+		a = a + 3'b001;
+		b = b + 3'b010;
+	end
+
+  always begin
+    #50
+    op = ~op
+  end
+endmodule

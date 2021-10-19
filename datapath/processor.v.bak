@@ -1,0 +1,3 @@
+module processor(clk, data);
+  input clk;
+  input [2:0] data;

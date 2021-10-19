@@ -1,0 +1,7 @@
+module datapath(clk);
+  input clk;
+  input [1:0] op;
+
+  register r0(.D(), .clk(clk), rst, Q)
+  register r1(.D(), clk, rst, Q)
+  register r2(.D(), clk, rst, Q)

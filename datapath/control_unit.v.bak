@@ -1,0 +1,79 @@
+module control_unit(ins, op1, op2, clk, op,
+r0_in, r0_out, r1_in,r1_out, r2_in, r2_out, data, A_in, G_in, G_out);
+
+  input [2:0] ins;
+
+  // op1 means the first operand, op2 means the second operand
+  input [1:0] op1, op2, op;
+  output data_in,r0_in, r0_out, r1_in,r1_out, r2_in, r2_out, A_in, G_in, G_out;
+  input clk;
+  output [2:0] data;
+  reg [4:0] cur_state;
+  wire [4:0] next_state;
+
+  wire port1_in, port1_out, port2_in, port2_out;
+
+  datapath path(clk, op, r0_in, r0_out, r1_in,r1_out, r2_in, r2_out, data, A_in, G_in, G_out,data_in);
+  fsm my_fsm(cur_s, next_s, ins, enable)
+
+  fsm my_fsm(.cur(cur_state), .next(next_state), .ins(ins));
+
+  always @(op1) begin
+    case(op1)
+      2'b00: begin
+        port1_in = r0_in;
+        port1_out = r0_out;
+      end
+
+      2'b01 : begin
+        port1_in = r1_in;
+        port1_out = r1_out;
+      end
+
+      2'b10 : begin
+        port1_in = r2_in;
+        port1_out = r2_out;
+      end
+    endcase
+  end
+
+  always @(op2) begin
+    case(op2)
+      2'b00: begin
+        port2_in = r0_in;
+        port2_out = r0_out;
+      end
+
+      2'b01 : begin
+        port2_in = r1_in;
+        port2_out = r1_out;
+      end
+
+      2'b10 : begin
+        port2_in = r2_in;
+        port2_out = r2_out;
+      end
+    endcase
+  end
+
+  // 000 for load, 001 for move, 010 for add, 011 for xor
+  always @(cur_state) begin
+    case(cur_state)
+
+    5'b00000:
+      begin
+        port1_out = 1;
+        A_in = 1;
+      end
+    5'b00001
+      begin
+        port1_out = 0;
+        A_in = 0;
+        port2_
+      end
+
+
+
+
+    endcase
+  end

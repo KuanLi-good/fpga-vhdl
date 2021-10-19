@@ -1,0 +1,7 @@
+module rom(w_addr, clk, w, d_in, out);
+	input [3:0] addr;
+	input [15:0] d_in;
+	input clk, w;
+	output out;
+
+endmodule
