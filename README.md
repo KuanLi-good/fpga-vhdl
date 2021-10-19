@@ -1,4 +1,4 @@
-# fpga-verilog
+# fpga-vhdl
 
 Implement a **processor** that can execute the following instructions.
 
